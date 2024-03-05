@@ -1,7 +1,7 @@
 from openai import OpenAI
 
 client = OpenAI(
-    api_key = "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"
+    api_key = "submit token here"
 )
 
 response = client.chat.completions.create(
