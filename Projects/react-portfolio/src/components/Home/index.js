@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './index.scss';
 import { useEffect, useState } from "react";
+import Loader from 'react-loaders';
 import AnimatedLetters from '../AnimatedLetters';
 import Logo from './Logo';
 
@@ -9,14 +10,18 @@ const Home = () => {
     const nameArray = [ ' ','M', 'i', 'c', 'h', 'a', 'e', 'l', ' ', 'F', 'e', 'r', 'a']
     const jobArray = ['S', 'o', 'f', 't', 'w', 'a', 'r', 'e', ' ', 'E', 'n', 'g', 'i', 'n', 'e', 'e', 'r']
 
-    // useEffect(() => {
-    //     return setTimeout(() => {
-    //         setLetterClass('text-animate-hover')
-    //     }, 4000)
-    // }, [])
+    useEffect(() => {
+        let timeoutId = setTimeout(() => {
+            setLetterClass('text-animate-hover')
+        }, 5000)
+        return () => {
+            clearTimeout(timeoutId)
+        }
+    }, [])
 
 
     return (
+        <>
         <div className="container home-page">
             <div className="text-zone">
                 <h1> 
@@ -38,6 +43,8 @@ const Home = () => {
             </div>
             <Logo />
         </div>
+        <Loader type="pacman" />
+        </>
     );
 }
 
